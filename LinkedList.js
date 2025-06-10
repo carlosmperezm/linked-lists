@@ -6,12 +6,8 @@ export class LinkedList {
   append(value) {
     // Adds a new node containing @value to the end of the list
     const newNode = new Node(value);
-    // console.log('new Node to the end: ', newNode.value)
     if (this.#size !== 0) {
       const lastNode = this.at(this.#size - 1);
-      // console.log('last node ', lastNode)
-      // console.log('size: ', this.#size)
-      // console.log('list', this.#list)
       lastNode.nextNode = newNode;
     }
     this.#list[this.#size] = newNode;
@@ -103,6 +99,25 @@ export class LinkedList {
       currentNode = nextNode;
     }
     return stringList += 'null';
+  }
+
+  insertAt(value, index) {
+    // That inserts a new node with the provided @value at the given @index.
+    // Follows the following structure:
+    // Previous structure: (previousNode) -> (nextNode)
+    // Resulting structure: (previousNode) -> (newNode) -> (nextNode)
+
+    // Create the new Node
+    const newNode = new Node(value);
+    // Get the node previous to the index postiion
+    // so we can link it to the new Node 
+    let previousNode = this.at(index - 1);
+    // Link the new Node created with the node it should point to
+    newNode.nextNode = previousNode.nextNode;
+    // Relink the prevous node to the new node
+    previousNode.nextNode = newNode;
+
+    this.#size ++;
   }
 
 }
