@@ -13,10 +13,10 @@ list.append("turtle");
 console.log(list.toString());
 console.log(list.size)
 
-list.pop()
+// list.pop()
 
-console.log(list.at(0))
-list.prepend('new');
+// console.log(list.at(0))
+list.removeAt(3);
 
 console.log(list.toString());
 console.log(list.size)

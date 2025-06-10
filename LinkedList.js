@@ -88,7 +88,6 @@ export class LinkedList {
   toString() {
     // represents your LinkedList objects as strings,
     // so you can print them out and preview them in the console.
-    //
     // The format should be: ( value ) -> ( value ) -> ( value ) -> null
     let stringList = '';
     let currentNode = this.head;
@@ -118,6 +117,17 @@ export class LinkedList {
     previousNode.nextNode = newNode;
 
     this.#size ++;
+  }
+  removeAt(index) {
+    // Removes the node at the given @index.
+
+    const previousNode = this.at(index - 1);
+    // Link the previous node to the element linked with
+    // the element wants to be deleted.
+    // before: (prevNode) -> (nodeToDelete) -> (nextNode)
+    // result: (prevNode) -> (nextNode)
+    previousNode.nextNode = this.at(index + 1);
+    this.#size --;
   }
 
 }
